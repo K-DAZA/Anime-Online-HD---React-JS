@@ -1,23 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import Homepage from './pages/Homepage';
+import NavBar from './components/NavBar';
+import AnimeSearch from './pages/AnimeSearch';
+import AnimeList from './pages/AnimeList';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <NavBar />
+
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Homepage animes={[7, 8, 20, 21, 24, 26]}/>}/>
+          <Route path="/animes" element={<AnimeSearch />}/>
+          <Route path="/list" element={<AnimeList />}/>
+          <Route path="" element=""/>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
