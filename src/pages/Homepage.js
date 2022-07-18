@@ -1,118 +1,39 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+import '../css/Homepage.css'
+import '../animations/HomePageanim.css'; 
+import chica from '../images/chica.png'
 import Card from '../components/Card';
 import Footer from '../components/Footer';
-import '../css/Homepage.css'
-import chica from '../images/chica.png'
-import '../animations/HomePageanim.css'; 
+import useAnime from '../Hooks/useAnime';
 
 export default function Homepage(props) {
 
-  //  - - PROPS - - 
+  //  --- PROPS --- 
   let number = props.animes[0];
-  let number_dos = props.animes[1];
-  let number_tres = props.animes[2];
-  let number_cuatro = props.animes[3];
-  let number_cinco = props.animes[4];
-  let number_seis = props.animes[5];
+  let number_two = props.animes[1];
+  let number_three = props.animes[2];
+  let number_four = props.animes[3];
+  let number_five = props.animes[4];
+  let number_six = props.animes[5];
 
 
-  // - - ANIME UNO - - 
-  const [anime, setAnime] = useState(null);
-  const [imagen, setImage] = useState();
-  const [year, setYear] = useState();
-  const [url, setUrl] = useState();
+  // --- DATA ANIME ONE --- 
+  const {nameAnime, imageAnime, animeYear} = useAnime(number, '');
 
-  //ANIME DOS
-  const [anime_dos, setAnimeDos] = useState();
-  const [image_dos, setImageDos] = useState();
-  const [year_dos, setYearDos] = useState();
+  // --- DATA ANIME TWO ---
+  const {nameAnimeTwo, imageAnimeTwo, animeYearTwo} = useAnime(number_two, '');
 
-  //ANIME TRES
-  const [anime_tres, setAnimeTres] = useState();
-  const [image_tres, setImageTres] = useState();
-  const [year_tres, setYearTres] = useState();
+  // --- DATA ANIME THREE ---
+  const {nameAnimeThree, imageAnimeThree, animeYearThree} = useAnime(number_three, '');
+  
+  // --- DATA ANIME FOUR ---
+  const {nameAnimeFour, imageAnimeFour, animeYearFour} = useAnime(number_four, '');
 
-  //ANIME CUATRO
-  const [anime_cuatro, setAnimeCuatro] = useState();
-  const [image_cuatro, setImageCuatro] = useState();
-  const [year_cuatro, setYearCuatro] = useState();
+  // --- DATA ANIME FIVE ---
+  const {nameAnimeFive, imageAnimeFive, animeYearFive} = useAnime(number_five, '');
 
-  //ANIME CINCO
-  const [anime_cinco, setAnimeCinco] = useState();
-  const [image_cinco, setImageCinco] = useState();
-  const [year_cinco, setYearCinco] = useState();
-
-
-  //ANIME SEIS
-  const [anime_seis, setAnimeSeis] = useState();
-  const [image_seis, setImageSeis] = useState();
-  const [year_seis, setYearSeis] = useState();
-
-  //HOOK REACT
-  useEffect(() => {
-    obtenerDatos()
-    obtenerDatosdos()
-    obtenerDatosTres()
-    obtenerDatosCuatro()
-    obtenerDatosCinco()
-    obtenerDatosSeis()
-  }, []);
-
-  //PETICIONES API 
-  const obtenerDatos = async () => {
-    const animes = await fetch(`https://api.jikan.moe/v4/anime/${number}`);
-    const datos = await animes.json();
-    setAnime(datos.data.title);
-    setImage(datos.data.images.jpg.image_url);
-    setYear(datos.data.year);
-    setUrl(datos.data.url);
-    console.log(datos);
-  }
-
-  const obtenerDatosdos = async () => {
-    const animes = await fetch(`https://api.jikan.moe/v4/anime/${number_dos}`);
-    const datos = await animes.json();
-    setAnimeDos(datos.data.title);
-    setImageDos(datos.data.images.jpg.image_url);
-    setYearDos(datos.data.year);
-    //console.log(datos);
-  }
-
-  const obtenerDatosTres = async () => {
-    const animes = await fetch(`https://api.jikan.moe/v4/anime/${number_tres}`);
-    const datos = await animes.json();
-    setAnimeTres(datos.data.title);
-    setImageTres(datos.data.images.jpg.image_url);
-    setYearTres(datos.data.year);
-    //console.log(datos);
-  }
-
-  const obtenerDatosCuatro = async () => {
-    const animes = await fetch(`https://api.jikan.moe/v4/anime/${number_cuatro}`);
-    const datos = await animes.json();
-    setAnimeCuatro(datos.data.title);
-    setImageCuatro(datos.data.images.jpg.image_url);
-    setYearCuatro(datos.data.year);
-    //console.log(datos);
-  }
-
-  const obtenerDatosCinco = async () => {
-    const animes = await fetch(`https://api.jikan.moe/v4/anime/${number_cinco}`);
-    const datos = await animes.json();
-    setAnimeCinco(datos.data.title);
-    setImageCinco(datos.data.images.jpg.image_url);
-    setYearCinco(datos.data.year);
-    //console.log(datos);
-  }
-
-  const obtenerDatosSeis = async () => {
-    const animes = await fetch(`https://api.jikan.moe/v4/anime/${number_seis}`);
-    const datos = await animes.json();
-    setAnimeSeis(datos.data.title);
-    setImageSeis(datos.data.images.jpg.image_url);
-    setYearSeis(datos.data.year);
-    //console.log(datos);
-  }
+  // --- DATA ANIME SIX ---
+  const {nameAnimeSix, imageAnimeSix, animeYearSix} = useAnime(number_six, '');
 
   //ESTADOS (HOOKS)
   const [nombre, setNombre] = useState('Anime World HD');
@@ -160,12 +81,12 @@ export default function Homepage(props) {
 
       <div className="container p-4 box-border bg-dark rounded text-center">
         <div className="box-border pl-20 sm:pl-48 md:pl-52 lg:pl-0 lg:flex lg:flex-row">
-        <Card name={anime} imagen={imagen} year={year} url={url}/>
-        <Card name={anime_dos} imagen={image_dos} year={year_dos}/>
-        <Card name={anime_tres} imagen={image_tres} year={year_tres}/>
-        <Card name={anime_cuatro} imagen={image_cuatro} year={year_cuatro}/>
-        <Card name={anime_cinco} imagen={image_cinco} year={year_cinco}/>
-        <Card name={anime_seis} imagen={image_seis} year={year_seis}/>
+        <Card name={ nameAnime }     imagen={ imageAnime }      year={ animeYear }/>
+        <Card name={ nameAnimeTwo }  imagen={ imageAnimeTwo }   year={ animeYearTwo }/>
+        <Card name={ nameAnimeThree }imagen={ imageAnimeThree } year={ animeYearThree }/>
+        <Card name={ nameAnimeFour } imagen={ imageAnimeFour }  year={ animeYearFour }/>
+        <Card name={ nameAnimeFive } imagen={ imageAnimeFive }  year={ animeYearFive }/>
+        <Card name={ nameAnimeSix }  imagen={ imageAnimeSix }   year={ animeYearSix }/>
         </div>
       </div>
 
@@ -178,8 +99,3 @@ export default function Homepage(props) {
     </div>
     )
 }
-
-// FUNCIONES PARA EVENTOS
-
-
-
