@@ -4,8 +4,8 @@ export default function NavBar() {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg bg-dark navbar-dark box-border">
-        <div className="container-fluid">
+      <nav className="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div className="container">
           <a className="navbar-brand" href="/">
             <span className="hover:text-violet-400"> ☯ Anime Online HD </span>
           </a>
@@ -21,7 +21,7 @@ export default function NavBar() {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div
-            className="justify-content-center collapse navbar-collapse"
+            className="collapse navbar-collapse"
             id="navbarNav"
           >
             <ul className="navbar-nav">

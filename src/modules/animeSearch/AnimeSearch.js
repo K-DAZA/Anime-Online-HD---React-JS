@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
-import AnimeResultsId from '../components/AnimeResultsId';
-import akame from '../images/akame.jpg'
-import '../animations/AnimeSearchanims.css';
+import AnimeResultsId from '../../components/AnimeResultsId';
+import akame from '../../images/akame.jpg'
+import '../../animations/AnimeSearchanims.css';
 
 export default function AnimeSearch() {
-
-  
 
   // ESTADOS 
   const [numero, setNumero]  = useState();
@@ -16,7 +14,6 @@ export default function AnimeSearch() {
 
   //PETICIONES API 
   const peticionDatos = async () => {
-    
     const animes = await fetch(`https://api.jikan.moe/v4/anime/${numero}`);
     const data = await animes.json();
     setAnime(data.data.title);
@@ -28,8 +25,6 @@ export default function AnimeSearch() {
   const num = (event) => {
     setNumero(event.target.value)
   }
-
-  
 
   return (
     <div>
