@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import Footer from '../components/Footer';
-import "../css/AnimeList.css"
-import mixanime from "../images/mixanime.jpg";
+import Footer from '../../components/Footer';
+import "../../css/AnimeList.css"
+import mixanime from "../../images/mixanime.jpg";
 
 export default function AnimeList() {
 
@@ -15,11 +15,8 @@ export default function AnimeList() {
   
   function añadirAnime(){
     setAnimes(animes => [...animes, input]);    
-    console.log(animes);
   }
   
-  
-
   return (
     <div className="container">
       <div className="mt-5 h-96 lg:overflow-hidden rounded bg-dark text-white p-0 lg:flex">
